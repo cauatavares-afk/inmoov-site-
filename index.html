@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InMoov</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">InMoov</div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay">
+        <div class="menu-content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="controlo.html">Controle</a></li>
+                <li><a href="alfabeto.html">Alfabeto</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>InMoov Hand</h1>
+            <p>Controle uma mão robótica em tempo real e aprenda a linguagem de sinais de forma interativa.</p>
+            <a href="controlo.html" class="cta-button">Começar</a>
+        </div>
+        <div class="hero-visual">
+            <div id="canvas-container"></div>
+        </div>
+    </section>
+
+    <!-- Video Showcase -->
+    <section class="video-showcase">
+        <h2>Recursos</h2>
+        <div class="video-carousel">
+            <div class="video-item">
+                <div class="video-thumbnail">
+                    <video autoplay muted loop playsinline>
+                        <source src="images/thumbnails/InMoov hand controlled by Leap Motion.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>
+                    <div class="video-overlay">
+                        <i class="fas fa-play play-icon"></i>
+                    </div>
+                </div>
+                <h3>Controle em Tempo Real</h3>
+                <p>Controle cada dedo da mão robótica com precisão</p>
+            </div>
+            <div class="video-item">
+                <div class="video-thumbnail">
+                    <video autoplay muted loop playsinline>
+                        <source src="images/thumbnails/lgp.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>
+                    <div class="video-overlay">
+                        <i class="fas fa-play play-icon"></i>
+                    </div>
+                </div>
+                <h3>Alfabeto em LGP</h3>
+                <p>Aprenda a linguagem gestual portuguesa de forma interativa</p>
+            </div>
+            <div class="video-item">
+                <div class="video-thumbnail">
+                    <video autoplay muted loop playsinline>
+                        <source src="images/thumbnails/sobre.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>
+                    <div class="video-overlay">
+                        <i class="fas fa-play play-icon"></i>
+                    </div>
+                </div>
+                <h3>Sobre o Projeto</h3>
+                <p>Conheça mais sobre o projeto InMoov e sua tecnologia</p>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <h2>Controle Preciso</h2>
+            <p>Controle cada dedo da mão robótica com precisão milimétrica, permitindo movimentos naturais e fluidos.</p>
+        </div>
+        <div class="feature">
+            <h2>Aprendizado Interativo</h2>
+            <p>Aprenda a linguagem gestual portuguesa de forma interativa, com feedback visual em tempo real.</p>
+        </div>
+        <div class="feature">
+            <h2>Tecnologia Avançada</h2>
+            <p>Utilizando tecnologias de ponta em robótica e visão computacional para uma experiência imersiva.</p>
+        </div>
+    </section>
+
+    <!-- Astronaut Section -->
+    <section class="astronaut-section">
+        <div class="astronaut-content">
+            <h2>Alfabeto em Língua Gestual</h2>
+            <h3>Aprenda com a Mão Robótica</h3>
+            <p>Explore o alfabeto em língua gestual através da nossa mão robótica. Cada letra é demonstrada com precisão e você pode praticar em tempo real.</p>
+            <a href="alfabeto.html" class="cta-button">Começar a Aprender</a>
+        </div>
+        <div class="astronaut-visual">
+            <video autoplay muted loop playsinline>
+                <source src="images/thumbnails/Kit DIY - Mão Robótica - Sequência Rápida.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>InMoov</h3>
+                <p>Projeto de mão robótica controlada por computador</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="controlo.html">Controle</a></li>
+                    <li><a href="alfabeto.html">Alfabeto</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="mailto:contato@inmoov.com">contato@inmoov.com</a></li>
+                    <li><a href="https://github.com/inmoov">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 InMoov. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Loading Animation -->
+    <div class="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/three-setup.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html> 

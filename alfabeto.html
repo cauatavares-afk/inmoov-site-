@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfabeto - InMoov</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <nav>
+            <div class="logo">InMoov</div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="menu-overlay">
+        <div class="menu-content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="controlo.html">Controle</a></li>
+                <li><a href="alfabeto.html">Alfabeto</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero alphabet-hero">
+            <div class="hero-content">
+                <h1>Alfabeto em Linguagem Gestual</h1>
+                <p>Aprenda e pratique o alfabeto em linguagem gestual com a mão robótica</p>
+            </div>
+            <div class="hero-visual">
+                <div id="canvas-container"></div>
+            </div>
+        </section>
+
+        <section class="alphabet-section">
+            <div class="alphabet-container">
+                <div class="alphabet-grid">
+                    <div class="letter-item" data-letter="A">
+                        <div class="letter">A</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="B">
+                        <div class="letter">B</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="C">
+                        <div class="letter">C</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="D">
+                        <div class="letter">D</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="E">
+                        <div class="letter">E</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="F">
+                        <div class="letter">F</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="G">
+                        <div class="letter">G</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="H">
+                        <div class="letter">H</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="I">
+                        <div class="letter">I</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="J">
+                        <div class="letter">J</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="K">
+                        <div class="letter">K</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="L">
+                        <div class="letter">L</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="M">
+                        <div class="letter">M</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="N">
+                        <div class="letter">N</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="O">
+                        <div class="letter">O</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="P">
+                        <div class="letter">P</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="Q">
+                        <div class="letter">Q</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="R">
+                        <div class="letter">R</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="S">
+                        <div class="letter">S</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="T">
+                        <div class="letter">T</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="U">
+                        <div class="letter">U</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="V">
+                        <div class="letter">V</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="W">
+                        <div class="letter">W</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="X">
+                        <div class="letter">X</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="Y">
+                        <div class="letter">Y</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                    <div class="letter-item" data-letter="Z">
+                        <div class="letter">Z</div>
+                        <button class="play-button">▶</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <h2>Aprenda em Tempo Real</h2>
+                <p>Veja a mão robótica demonstrando cada letra do alfabeto</p>
+            </div>
+            <div class="feature">
+                <h2>Interatividade</h2>
+                <p>Clique em cada letra para ver a demonstração</p>
+            </div>
+            <div class="feature">
+                <h2>Visualização 3D</h2>
+                <p>Observe os movimentos em detalhes com controles de câmera</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>InMoov</h3>
+                <p>Projeto de mão robótica controlada via web</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="controlo.html">Controle</a></li>
+                    <li><a href="alfabeto.html">Alfabeto</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 InMoov. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/three-setup.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/alfabeto.js"></script>
+</body>
+</html> 
