@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "setup": "mkdir -p libs && curl -o libs/three.module.js https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.module.js && curl -o libs/OrbitControls.js https://cdn.jsdelivr.net/npm/three@0.132.2/examples/jsm/controls/OrbitControls.js && curl -o libs/GLTFLoader.js https://cdn.jsdelivr.net/npm/three@0.132.2/examples/jsm/loaders/GLTFLoader.js",
-    "deploy": "gh-pages -d ."
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d . -t true",
+    "build": "echo 'No build step required'"
   },
   "dependencies": {
     "express": "^4.17.1"
