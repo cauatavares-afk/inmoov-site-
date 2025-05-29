@@ -7,15 +7,11 @@
     "start": "node server.js",
     "setup": "mkdir -p libs && curl -o libs/three.module.js https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.module.js && curl -o libs/OrbitControls.js https://cdn.jsdelivr.net/npm/three@0.132.2/examples/jsm/controls/OrbitControls.js && curl -o libs/GLTFLoader.js https://cdn.jsdelivr.net/npm/three@0.132.2/examples/jsm/loaders/GLTFLoader.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d .",
+    "deploy": "gh-pages -d . --dotfiles",
     "build": "echo 'No build step required'"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "gh-pages": "^6.1.1"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "express": "^4.18.2"
   },
   "repository": {
     "type": "git",
@@ -32,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/cauatavares-afk/inmoov-site-/issues"
   },
-  "homepage": "https://cauatavares-afk.github.io/inmoov-site-/"
+  "homepage": "https://cauatavares-afk.github.io/inmoov-site-/",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }
