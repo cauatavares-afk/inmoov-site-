@@ -1,27 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle da Mão Robótica</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/controle.css">
+    <title>Controle - InMoov</title>
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="loading-container">
-        <div class="loading-text">Carregando modelo 3D...</div>
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
-        </div>
-    </div>
-    
+    <!-- Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
+    <!-- Header -->
     <header>
         <nav>
             <div class="logo">InMoov</div>
@@ -32,86 +24,74 @@
         </nav>
     </header>
 
+    <!-- Menu Overlay -->
     <div class="menu-overlay">
         <div class="menu-content">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="controlo.html">Controle</a></li>
-                <li><a href="alfabeto.html">Alfabeto</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./controlo.html">Controle</a></li>
+                <li><a href="./alfabeto.html">Alfabeto</a></li>
+                <li><a href="./sobre.html">Sobre</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="container">
-        <div id="canvas-container"></div>
-        
-        <div class="controls">
-            <h2>Controle dos Dedos</h2>
-            
-            <div class="slider-group">
-                <label for="polegar">Polegar</label>
-                <input type="range" id="polegar" min="0" max="90" value="0" step="1">
-                <span class="angle-display">0°</span>
+    <!-- Main Content -->
+    <main class="control-page">
+        <div class="control-container">
+            <div class="model-view">
+                <div id="canvas-container"></div>
             </div>
-
-            <div class="slider-group">
-                <label for="indicador">Indicador</label>
-                <input type="range" id="indicador" min="0" max="90" value="0" step="1">
-                <span class="angle-display">0°</span>
+            <div class="controls-panel">
+                <h2>Controles</h2>
+                <div class="control-group">
+                    <h3>Polegar</h3>
+                    <input type="range" id="polegar" min="0" max="90" value="0">
+                    <span class="value">0°</span>
+                </div>
+                <div class="control-group">
+                    <h3>Indicador</h3>
+                    <input type="range" id="indicador" min="0" max="90" value="0">
+                    <span class="value">0°</span>
+                </div>
+                <div class="control-group">
+                    <h3>Médio</h3>
+                    <input type="range" id="medio" min="0" max="90" value="0">
+                    <span class="value">0°</span>
+                </div>
+                <div class="control-group">
+                    <h3>Anelar</h3>
+                    <input type="range" id="anelar" min="0" max="90" value="0">
+                    <span class="value">0°</span>
+                </div>
+                <div class="control-group">
+                    <h3>Mindinho</h3>
+                    <input type="range" id="mindinho" min="0" max="90" value="0">
+                    <span class="value">0°</span>
+                </div>
+                <div class="control-group">
+                    <h3>Pulso</h3>
+                    <input type="range" id="pulso" min="-90" max="90" value="0">
+                    <span class="value">0°</span>
+                </div>
             </div>
+        </div>
+    </main>
 
-            <div class="slider-group">
-                <label for="medio">Médio</label>
-                <input type="range" id="medio" min="0" max="90" value="0" step="1">
-                <span class="angle-display">0°</span>
+    <!-- Loading Animation -->
+    <div class="loading-container">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Carregando modelo 3D...</p>
+            <div class="loading-progress-container">
+                <div class="loading-progress"></div>
             </div>
-
-            <div class="slider-group">
-                <label for="anelar">Anelar</label>
-                <input type="range" id="anelar" min="0" max="90" value="0" step="1">
-                <span class="angle-display">0°</span>
-            </div>
-
-            <div class="slider-group">
-                <label for="mindinho">Mindinho</label>
-                <input type="range" id="mindinho" min="0" max="90" value="0" step="1">
-                <span class="angle-display">0°</span>
-            </div>
-
-            <div class="slider-group">
-                <label for="pulso">Pulso</label>
-                <input type="range" id="pulso" min="-45" max="45" value="0" step="1">
-                <span class="angle-display">0°</span>
-            </div>
-
-            <button id="reset-button" class="reset-button">Resetar Posições</button>
         </div>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>InMoov</h3>
-                <p>Projeto de mão robótica controlada via web</p>
-            </div>
-            <div class="footer-section">
-                <h3>Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="controlo.html">Controle</a></li>
-                    <li><a href="alfabeto.html">Alfabeto</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 InMoov. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <script type="module" src="js/three-setup.js"></script>
-    <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/controle.js"></script>
+    <!-- Scripts -->
+    <script type="module" src="./js/three-setup.js"></script>
+    <script type="module" src="./js/controle.js"></script>
+    <script type="module" src="./js/main.js"></script>
 </body>
 </html> 
