@@ -31,111 +31,115 @@ class SceneManager {
     }
 
     init() {
-        // Configurar renderer
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.setPixelRatio(window.devicePixelRatio);
-        this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        
-        const canvasContainer = document.getElementById('canvas-container');
-        if (canvasContainer) {
-            canvasContainer.appendChild(this.renderer.domElement);
-        }
-
-        // Configurar câmera
-        this.camera.position.set(0, 1.5, 3);
-        this.camera.lookAt(0, 1, 0);
-
-        // Adicionar controles de órbita apenas na página de controle
-        if (this.isControlPage) {
-            this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-            this.controls.enableDamping = true;
-            this.controls.dampingFactor = 0.05;
-            this.controls.minDistance = 2;
-            this.controls.maxDistance = 5;
-            this.controls.maxPolarAngle = Math.PI / 2;
-        }
-
-        // Adicionar luzes
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        this.scene.add(ambientLight);
-
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(5, 5, 5);
-        directionalLight.castShadow = true;
-        directionalLight.shadow.mapSize.width = 2048;
-        directionalLight.shadow.mapSize.height = 2048;
-        this.scene.add(directionalLight);
-
-        // Carregar modelo apenas na página de controle
-        if (this.isControlPage) {
-            const loader = new GLTFLoader();
-            const modelPath = './models/mano_hand_cyborg.glb';
+        try {
+            // Configurar renderer
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+            this.renderer.setPixelRatio(window.devicePixelRatio);
+            this.renderer.shadowMap.enabled = true;
+            this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             
-            console.log('Loading model from:', modelPath);
-            
-            loader.load(
-                modelPath,
-                (gltf) => {
-                    console.log('Model loaded successfully');
-                    this.model = gltf.scene;
-                    this.model.scale.set(0.03, 0.03, 0.03);
-                    this.model.position.set(0, -1, 0);
-                    this.model.rotation.set(0, Math.PI, 0);
-                    this.model.traverse((node) => {
-                        if (node.isMesh) {
-                            node.castShadow = true;
-                            node.receiveShadow = true;
-                            node.material.metalness = 0.7;
-                            node.material.roughness = 0.3;
+            const canvasContainer = document.getElementById('canvas-container');
+            if (canvasContainer) {
+                canvasContainer.appendChild(this.renderer.domElement);
+            }
+
+            // Configurar câmera
+            this.camera.position.set(0, 1.5, 3);
+            this.camera.lookAt(0, 1, 0);
+
+            // Adicionar controles de órbita apenas na página de controle
+            if (this.isControlPage) {
+                this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.enableDamping = true;
+                this.controls.dampingFactor = 0.05;
+                this.controls.minDistance = 2;
+                this.controls.maxDistance = 5;
+                this.controls.maxPolarAngle = Math.PI / 2;
+            }
+
+            // Adicionar luzes
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            this.scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(5, 5, 5);
+            directionalLight.castShadow = true;
+            directionalLight.shadow.mapSize.width = 2048;
+            directionalLight.shadow.mapSize.height = 2048;
+            this.scene.add(directionalLight);
+
+            // Carregar modelo apenas na página de controle
+            if (this.isControlPage) {
+                const loader = new GLTFLoader();
+                const modelPath = './models/mano_hand_cyborg.glb';
+                
+                console.log('Loading model from:', modelPath);
+                
+                loader.load(
+                    modelPath,
+                    (gltf) => {
+                        console.log('Model loaded successfully');
+                        this.model = gltf.scene;
+                        this.model.scale.set(0.03, 0.03, 0.03);
+                        this.model.position.set(0, -1, 0);
+                        this.model.rotation.set(0, Math.PI, 0);
+                        this.model.traverse((node) => {
+                            if (node.isMesh) {
+                                node.castShadow = true;
+                                node.receiveShadow = true;
+                                node.material.metalness = 0.7;
+                                node.material.roughness = 0.3;
+                            }
+                        });
+                        this.scene.add(this.model);
+
+                        // Configurar animações
+                        this.mixer = new THREE.AnimationMixer(this.model);
+                        if (gltf.animations.length > 0) {
+                            this.action = this.mixer.clipAction(gltf.animations[0]);
+                            this.action.play();
                         }
-                    });
-                    this.scene.add(this.model);
 
-                    // Configurar animações
-                    this.mixer = new THREE.AnimationMixer(this.model);
-                    if (gltf.animations.length > 0) {
-                        this.action = this.mixer.clipAction(gltf.animations[0]);
-                        this.action.play();
+                        // Remover tela de carregamento
+                        const loadingContainer = document.querySelector('.loading-container');
+                        if (loadingContainer) {
+                            loadingContainer.classList.add('hidden');
+                            setTimeout(() => {
+                                loadingContainer.style.display = 'none';
+                            }, 500);
+                        }
+                    },
+                    (xhr) => {
+                        const progress = (xhr.loaded / xhr.total * 100);
+                        console.log(progress + '% loaded');
+                        
+                        // Atualizar barra de progresso
+                        const progressBar = document.querySelector('.loading-progress');
+                        if (progressBar) {
+                            progressBar.style.width = progress + '%';
+                        }
+                    },
+                    (error) => {
+                        console.error('Error loading model:', error);
+                        
+                        // Mostrar mensagem de erro
+                        const loadingText = document.querySelector('.loading-text');
+                        if (loadingText) {
+                            loadingText.textContent = 'Erro ao carregar o modelo. Por favor, recarregue a página.';
+                            loadingText.style.color = '#ff4444';
+                        }
                     }
+                );
+            }
 
-                    // Remover tela de carregamento
-                    const loadingContainer = document.querySelector('.loading-container');
-                    if (loadingContainer) {
-                        loadingContainer.classList.add('hidden');
-                        setTimeout(() => {
-                            loadingContainer.style.display = 'none';
-                        }, 500);
-                    }
-                },
-                (xhr) => {
-                    const progress = (xhr.loaded / xhr.total * 100);
-                    console.log(progress + '% loaded');
-                    
-                    // Atualizar barra de progresso
-                    const progressBar = document.querySelector('.loading-progress');
-                    if (progressBar) {
-                        progressBar.style.width = progress + '%';
-                    }
-                },
-                (error) => {
-                    console.error('Error loading model:', error);
-                    
-                    // Mostrar mensagem de erro
-                    const loadingText = document.querySelector('.loading-text');
-                    if (loadingText) {
-                        loadingText.textContent = 'Erro ao carregar o modelo. Por favor, recarregue a página.';
-                        loadingText.style.color = '#ff4444';
-                    }
-                }
-            );
+            // Adicionar listener para redimensionamento
+            window.addEventListener('resize', () => this.onWindowResize(), false);
+
+            // Iniciar animação
+            this.animate();
+        } catch (error) {
+            console.error('Error initializing scene:', error);
         }
-
-        // Adicionar listener para redimensionamento
-        window.addEventListener('resize', () => this.onWindowResize(), false);
-
-        // Iniciar animação
-        this.animate();
     }
 
     updateFingerRotation(finger, angle) {

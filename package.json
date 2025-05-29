@@ -1,34 +1,30 @@
 {
   "name": "inmoov-site",
   "version": "1.0.0",
-  "description": "InMoov Hand Control Website",
+  "description": "Site do projeto InMoov - Mão Robótica Controlada",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "setup": "mkdir -p libs && curl -o libs/three.module.js https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.module.js && curl -o libs/OrbitControls.js https://cdn.jsdelivr.net/npm/three@0.132.2/examples/jsm/controls/OrbitControls.js && curl -o libs/GLTFLoader.js https://cdn.jsdelivr.net/npm/three@0.132.2/examples/jsm/loaders/GLTFLoader.js",
-    "deploy": "gh-pages -d ."
+    "build": "echo 'No build step required'"
   },
   "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "express": "^4.18.2"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cauatavares-afk/inmoov-site-.git"
   },
   "keywords": [
-    "inmoov",
     "robotics",
-    "3d",
-    "webgl",
-    "threejs"
+    "web",
+    "threejs",
+    "education"
   ],
   "author": "Cauã Tavares",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cauatavares-afk/inmoov-site-/issues"
   },
-  "homepage": "https://cauatavares-afk.github.io/inmoov-site-"
+  "homepage": "https://cauatavares-afk.github.io/inmoov-site-/"
 }
